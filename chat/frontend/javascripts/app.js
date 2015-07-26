@@ -9,7 +9,7 @@ var app = app || {};
 **/
 app.Message = Backbone.Model.extend({
     url: function() {
-         return 'http://phone-karate.codio.io:3000/start';
+         return 'http://localhost:3000/start';
     },
     defaults: {
         data: []
@@ -19,7 +19,7 @@ app.Message = Backbone.Model.extend({
 app.SubmitMessage = Backbone.Model.extend({
     // data source
     url: function() {
-        return 'http://phone-karate.codio.io:3000/send/' + this.get('message');
+        return 'http://localhost:3000/send/' + this.get('message');
     },
     defaults: {
         message: ''
@@ -66,7 +66,7 @@ app.MessageView = Backbone.View.extend({
         }
         
          // Let us open a web socket
-         ws = new WebSocket("ws://phone-karate.codio.io:443/start", ['echo-protocol']);
+         ws = new WebSocket("ws://localhost:3000/start", ['echo-protocol']);
          ws.onopen = function()
          {
              div.append("<h2>Done</h2>");
